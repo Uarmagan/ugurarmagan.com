@@ -1,14 +1,9 @@
-import Head from 'next/head';
+import Container from '../components/container';
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
+    <Container>
+      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -40,7 +35,7 @@ export default function Home() {
             </p>
           </a>
         </div>
-      </main>
-    </div>
+      </div>
+    </Container>
   );
 }
