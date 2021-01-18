@@ -1,39 +1,28 @@
+import Image from 'next/image';
 import Container from '../components/container';
 
 export default function Home() {
   return (
     <Container>
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div>
-          <a href="https://nextjs.org/docs">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a href="https://github.com/vercel/next.js/tree/master/examples">
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className="flex flex-col items-center w-9/12 max-w-3xl mx-auto mt-20 space-y-5">
+        <Image
+          src="/images/avatar.jpg"
+          alt="Picture of the author"
+          height={150}
+          width={150}
+          className="rounded-full"
+        />
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-5xl font-bold tracking-wide text-center mb-3 leading-14">
+            HI, MY NAME IS UGUR
+          </h1>
+          <h3 className="text-xl my-2">Welcome To My Internet Home</h3>
+          <p className="my-8 text-gray-400 prose-lg items-center w-11/12">
+            I’m a Full-Stack Developer based in Chicago with a focus in
+            Javascript and Typescript. I write about my learnings on my Blog. If
+            you have any web development needs, please reach out! If you want to
+            say hi, connect with me on Twitter!
+          </p>
         </div>
       </div>
     </Container>
