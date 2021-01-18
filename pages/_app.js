@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Ugur Armagan</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="width=device-width, user-scalable=no" name="viewport" />
       </Head>
       <Component {...pageProps} />
     </>
