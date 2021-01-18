@@ -1,16 +1,17 @@
-const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
+const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   purge: ['./pages/**/*.js', './components/**/*.js'],
   darkMode: false, // or 'media' or 'class'
   fontFamily: {
-    sans: ['Inter', ...fontFamily.sans],
+    sans: ['Inter', ...fontFamily.sans]
   },
   theme: {
-    extend: {},
+    extend: {}
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [require('@tailwindcss/typography')],
+  // eslint-disable-next-line global-require
+  plugins: [require('@tailwindcss/typography')]
 };
