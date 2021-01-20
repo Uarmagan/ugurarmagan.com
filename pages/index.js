@@ -27,7 +27,7 @@ export default function Home() {
           and Typescript. I write on life, building on the internet, and tech.
           If you have any web development needs, please reach out! If you want
           to say hi, connect with me on{' '}
-          <Link href="https://stackoverflow.com/" passHref>
+          <Link href="https://twitter.com/UgurArma" passHref>
             <span className="font-semibold text-orange">Twitter</span>
           </Link>
           !
