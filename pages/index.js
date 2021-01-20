@@ -22,7 +22,7 @@ export default function Home() {
             <h3 className="text-xl sm:text-2xl">Welcome To My Internet Home</h3>
           </div>
         </div>
-        <p className="items-center w-10/12 sm:w-11/12 mt-8 text-center sm:text-left prose-lg">
+        <p className="items-center  mt-8 text-center text-gray-300 sm:w-11/12 sm:text-left prose">
           I’m a Full-Stack Developer based in Chicago with a focus in Javascript
           and Typescript. I write on life, building on the internet, and tech.
           If you have any web development needs, please reach out! If you want
