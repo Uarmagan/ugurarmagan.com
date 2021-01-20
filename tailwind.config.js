@@ -7,7 +7,12 @@ module.exports = {
     sans: ['Inter', ...fontFamily.sans]
   },
   theme: {
-    extend: {}
+    extend: {},
+    textColor: {
+      orange: {
+        DEFAULT: '#f7b733'
+      }
+    }
   },
   variants: {
     extend: {}

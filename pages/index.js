@@ -13,23 +13,22 @@ export default function Home() {
             height={140}
             width={140}
             className="rounded-full"
+            priority
           />
           <div className="flex flex-col items-center justify-center sm:items-start sm:whitespace-nowrap">
-            <h1 className="mb-3 text-3xl font-bold tracking-wide text-center sm:mb-0 sm:text-4xl leading-14">
+            <h1 className="mb-3 text-3xl font-bold tracking-wide text-center sm:mb-0 sm:text-4xl leading-14 text-gradient">
               HI, MY NAME IS UGUR
             </h1>
-            <h3 className="my-2 text-xl sm:text-2xl">
-              Welcome To My Internet Home
-            </h3>
+            <h3 className="text-xl sm:text-2xl">Welcome To My Internet Home</h3>
           </div>
         </div>
-        <p className="items-center w-11/12 mt-8 text-gray-400 prose-lg">
+        <p className="items-center w-11/12 mt-8 prose-lg">
           I’m a Full-Stack Developer based in Chicago with a focus in Javascript
-          and Typescript. I write my thoughts on my Blog. If you have any web
-          development needs, please reach out! If you want to say hi, connect
-          with me on{' '}
-          <Link href="https://stackoverflow.com/" passHref color->
-            Twitter
+          and Typescript. I write on life, building on the internet, and tech.
+          If you have any web development needs, please reach out! If you want
+          to say hi, connect with me on{' '}
+          <Link href="https://stackoverflow.com/" passHref>
+            <span className="font-semibold text-orange">Twitter</span>
           </Link>
           !
         </p>
