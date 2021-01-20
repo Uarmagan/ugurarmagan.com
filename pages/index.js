@@ -5,7 +5,7 @@ import Container from '../components/container';
 export default function Home() {
   return (
     <Container>
-      <div className="flex flex-col items-center">
+      <section className="flex flex-col items-center">
         <div className="flex flex-col items-center w-11/12 max-w-3xl mx-auto mt-20 sm:flex-row space-y-5 sm:space-x-8">
           <Image
             src="/images/avatar.jpg"
@@ -32,7 +32,7 @@ export default function Home() {
           </Link>
           !
         </p>
-      </div>
+      </section>
     </Container>
   );
 }
