@@ -24,9 +24,9 @@ export default function Home() {
         </div>
         <p className="items-center  mt-8 text-center text-gray-300 sm:w-11/12 sm:text-left prose">
           I’m a Full-Stack Developer based in Chicago with a focus in Javascript
-          and Typescript. I write on life, building on the internet, and tech.
-          If you have any web development needs, please reach out! If you want
-          to say hi, connect with me on{' '}
+          and Typescript. I write a little about life, building on the internet,
+          and tech. If you have any web development needs, please reach out! If
+          you want to say hi, connect with me on{' '}
           <Link href="https://twitter.com/UgurArma" passHref>
             <span className="font-semibold text-orange">Twitter</span>
           </Link>
