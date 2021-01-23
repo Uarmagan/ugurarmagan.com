@@ -38,19 +38,21 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col items-center w-full my-10">
-        <h2 className="mb-6 text-xl font-semibold tracking-wide border-b-2 leading-9 border-orange text-orange text-gradient">
+        <h2 className="mb-6 text-xl  sm:text-2xl font-semibold tracking-wide border-b-2 leading-9 border-orange text-orange text-gradient mb-9">
           Latest Writings
         </h2>
         <div className="flex flex-col w-11/12 space-y-5">
           <div className="blog-item space-y-4">
             <div className="flex flex-col items-center justify-between mb-2 sm:flex-row space-y-1">
-              <h3 className="text-lg font-semibold sm:text-lg max-w-max">
+              <h3 className="text-lg font-semibold sm:text-xl max-w-max">
                 2020 to 2021 Yearly Review
               </h3>
-              <p className="text-md text-gray-300">January 1st, 2020</p>
+              <p className="text-sm sm:text-md text-gray-300">
+                January 1st, 2020
+              </p>
             </div>
-            <Dotdotdot clamp={3}>
-              <p className="text-gray-300">
+            <Dotdotdot clamp={4}>
+              <p className="text-gray-300 prose">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Reiciendis ratione officia unde aliquam deleniti alias, delectus
                 rem possimus facilis. Dolorem dignissimos saepe similique atque
