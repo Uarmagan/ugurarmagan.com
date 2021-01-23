@@ -29,7 +29,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        orange: '#f7b733'
+        orange: '#FAAE14',
+        neon: '#1DCBDB'
       }
     }
   },
