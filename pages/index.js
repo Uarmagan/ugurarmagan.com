@@ -5,7 +5,7 @@ import Container from '../components/container';
 export default function Home() {
   return (
     <Container>
-      <section className="flex flex-col items-center mb-16">
+      <section className="flex flex-col items-center mb-24">
         <div className="flex flex-col items-center w-11/12 max-w-3xl mx-auto mt-20 sm:flex-row space-y-5 sm:space-x-8">
           <Image
             src="/images/avatar.jpg"
@@ -36,23 +36,25 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="flex flex-col items-center w-full space-y-5">
+      <section className="flex flex-col items-center w-full my-10">
         <h2 className="mb-6 text-xl font-semibold tracking-wide border-b-2 leading-9 border-orange text-orange text-gradient">
           Latest Writings
         </h2>
-        <div className="flex flex-col w-11/12">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-lg font-semibold max-w-max">
-              2020 to 2021 Yearly Review
-            </h3>
-            <p className="text-sm text-gray-300">January 1st, 2020</p>
+        <div className="flex flex-col w-11/12 space-y-5">
+          <div className="blog-item space-y-4">
+            <div className="flex flex-col items-center justify-between mb-2 sm:flex-row space-y-1">
+              <h3 className="text-md font-semibold sm:text-lg max-w-max">
+                2020 to 2021 Yearly Review
+              </h3>
+              <p className="text-sm text-gray-300">January 1st, 2020</p>
+            </div>
+            <p className="text-gray-300">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Reiciendis ratione officia unde aliquam deleniti alias, delectus
+              rem possimus facilis. Dolorem dignissimos saepe similique atque
+              tenetur delectus in, quidem ea quaerat.
+            </p>
           </div>
-          <p className="text-gray-300">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis
-            ratione officia unde aliquam deleniti alias, delectus rem possimus
-            facilis. Dolorem dignissimos saepe similique atque tenetur delectus
-            in, quidem ea quaerat.
-          </p>
         </div>
       </section>
     </Container>
