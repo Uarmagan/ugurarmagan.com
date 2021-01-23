@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from '../components/container';
+import Dotdotdot from 'react-dotdotdot';
 
 export default function Home() {
   return (
@@ -43,17 +44,19 @@ export default function Home() {
         <div className="flex flex-col w-11/12 space-y-5">
           <div className="blog-item space-y-4">
             <div className="flex flex-col items-center justify-between mb-2 sm:flex-row space-y-1">
-              <h3 className="text-md font-semibold sm:text-lg max-w-max">
+              <h3 className="text-lg font-semibold sm:text-lg max-w-max">
                 2020 to 2021 Yearly Review
               </h3>
-              <p className="text-sm text-gray-300">January 1st, 2020</p>
+              <p className="text-md text-gray-300">January 1st, 2020</p>
             </div>
-            <p className="text-gray-300">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Reiciendis ratione officia unde aliquam deleniti alias, delectus
-              rem possimus facilis. Dolorem dignissimos saepe similique atque
-              tenetur delectus in, quidem ea quaerat.
-            </p>
+            <Dotdotdot clamp={3}>
+              <p className="text-gray-300">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Reiciendis ratione officia unde aliquam deleniti alias, delectus
+                rem possimus facilis. Dolorem dignissimos saepe similique atque
+                tenetur delectus in, quidem ea quaerat.
+              </p>
+            </Dotdotdot>
           </div>
         </div>
       </section>
