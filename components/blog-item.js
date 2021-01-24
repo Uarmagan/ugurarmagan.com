@@ -1,5 +1,6 @@
 import Dotdotdot from 'react-dotdotdot';
 import Link from 'next/link';
+import { parseISO, format } from 'date-fns';
 
 export default function BlogItem({ title, publishedAt, description, slug }) {
   return (
@@ -10,7 +11,9 @@ export default function BlogItem({ title, publishedAt, description, slug }) {
             <h3 className="text-lg font-semibold sm:text-xl max-w-max">
               {title}
             </h3>
-            <p className="text-sm text-gray-300 sm:text-md">{publishedAt}</p>
+            <p className="text-sm text-gray-300 sm:text-md">
+              {format(parseISO(publishedAt), 'MMMM dd, yyyy')}
+            </p>
           </div>
           <Dotdotdot clamp={4}>
             <p className="text-gray-300 prose">{description}</p>
