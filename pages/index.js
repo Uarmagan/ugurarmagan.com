@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import BlogItem from '../components/blog-item';
-
+import { getAllFilesFrontMatter } from '../lib/mdx';
 import Container from '../components/container';
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <Container>
       <section className="flex flex-col items-center mb-32">
@@ -39,13 +39,20 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col items-center w-full my-10">
-        <h2 className="mb-6 text-xl font-semibold tracking-wide border-b-2 sm:text-2xl leading-9 border-orange text-orange text-gradient mb-9">
-          Latest Writings
+        <h2 className="mb-6 font-semibold tracking-wide border-b-2 text-2xl leading-9 border-orange text-orange text-gradient mb-9">
+          Latest Writings{' '}
         </h2>
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
+        {!posts.length && 'No posts found.'}
+        {posts.length &&
+          posts.map((frontMatter) => (
+            <BlogItem key={frontMatter.title} {...frontMatter} />
+          ))}
       </section>
     </Container>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter();
+  return { props: { posts } };
 }
