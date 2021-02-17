@@ -5,7 +5,7 @@ import Container from './container';
 export default function BlogLayout({ children, frontMatter }) {
   return (
     <Container>
-      <div className="py-32 overflow-hidden text-white">
+      <article className="py-32 overflow-hidden text-white">
         <div className="px-4 sm:px-6 lg:px-8">
           <Link href="/">
             <a className="text-sm text-gray-400">← Go Back</a>
@@ -18,11 +18,11 @@ export default function BlogLayout({ children, frontMatter }) {
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <article className="mx-auto mt-5 prose-dark prose-lg leading-8">
+          <div className="mx-auto mt-5 prose lg:prose-xl leading-8">
             {children}
-          </article>
+          </div>
         </div>
-      </div>
+      </article>
     </Container>
   );
 }
