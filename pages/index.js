@@ -21,10 +21,12 @@ export default function Home({ posts }) {
             <h1 className="mb-3 text-3xl font-bold tracking-wide text-center sm:mb-0 sm:text-4xl leading-14 text-gradient">
               HI, MY NAME IS UGUR
             </h1>
-            <h3 className="text-xl sm:text-2xl">Welcome To My Internet Home</h3>
+            <h3 className="text-2xl sm:text-2xl">
+              Welcome To My Internet Home
+            </h3>
           </div>
         </div>
-        <p className="items-center mt-8 text-center text-gray-300 sm:w-11/12 sm:text-left prose prose-lg">
+        <p className="items-center mt-8 text-center text-gray-300 sm:w-11/12 sm:text-left prose prose-xl">
           I’m a Full-Stack Developer based in Chicago with a focus in Javascript
           and Typescript. I write a little about life, building on the internet,
           and tech. If you have any web development needs, please reach out! If
