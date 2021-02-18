@@ -41,7 +41,7 @@ export default function Home({ posts }) {
       </section>
 
       <section className="flex flex-col items-center w-full my-10">
-        <h2 className="mb-6 font-semibold tracking-wide border-b-2 text-2xl leading-9 border-orange text-orange text-gradient mb-9">
+        <h2 className="mb-6 text-2xl font-semibold tracking-wide border-b-2 leading-9 border-orange text-orange text-gradient mb-9">
           Latest Writings{' '}
         </h2>
         {!posts.length && 'No posts found.'}
