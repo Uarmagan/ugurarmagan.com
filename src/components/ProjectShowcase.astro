@@ -1,0 +1,98 @@
+---
+import Section from "./Section.astro";
+import { resumeData } from "../content/data";
+// Import shadcn Card components
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
+
+const { projects } = resumeData;
+---
+
+<Section id='projects' variant='slide-up'>
+  <h2 class='text-3xl md:text-4xl font-bold font-heading mb-8'>
+    Project Highlights
+  </h2>
+
+  <p class='text-lg text-muted-foreground mb-12 max-w-3xl'>
+    Key projects I've delivered that demonstrate my expertise and impact.
+  </p>
+
+  <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+    {
+      projects.map((project, index) => (
+        <Card className='group overflow-hidden border-border/40 transition-all duration-300 hover:border-primary/50 hover:shadow-md'>
+          <CardHeader className='pb-2'>
+            {/* Company logo or project icon */}
+            <div class='w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3 text-primary'>
+              <span class='font-mono font-bold'>
+                {project.company.substring(0, 2)}
+              </span>
+            </div>
+            <CardTitle className='group-hover:text-primary transition-colors'>
+              {project.name}
+            </CardTitle>
+            <CardDescription className='flex items-center'>
+              {project.company}
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent>
+            <p class='text-sm text-muted-foreground'>{project.description}</p>
+
+            {/* Add technologies if available in your data */}
+            {project.technologies && (
+              <div class='mt-4'>
+                <div class='flex flex-wrap gap-1.5 mt-2'>
+                  {project.technologies.map((tech: string) => (
+                    <span class='text-xs bg-secondary/50 text-secondary-foreground px-2 py-0.5 rounded-full'>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </CardContent>
+
+          {/* If you have links to add */}
+          <CardFooter className='pt-0 text-sm text-muted-foreground opacity-70 group-hover:opacity-100 transition-opacity'>
+            <span class='flex items-center'>
+              <span class='mr-1'>View details</span>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='16'
+                height='16'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                class='transition-transform group-hover:translate-x-1'
+              >
+                <path d='M5 12h14' />
+                <path d='m12 5 7 7-7 7' />
+              </svg>
+            </span>
+          </CardFooter>
+        </Card>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  /* Optional: Add a subtle gradient hover effect */
+  .card-hover-gradient:hover {
+    background-image: linear-gradient(
+      to bottom right,
+      var(--card),
+      var(--accent-foreground) / 5%
+    );
+  }
+</style>
