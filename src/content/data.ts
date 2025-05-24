@@ -1,4 +1,4 @@
-import type { ResumeData } from "../types";
+import type { ResumeData, ProjectItem } from "../types";
 
 export const resumeData: ResumeData = {
   summary:
@@ -9,15 +9,8 @@ export const resumeData: ResumeData = {
       title: "Senior Frontend Developer",
       dates: "May 2024–Present",
       location: "Remote",
-      description: [
-        "Served as the technical lead for an 8-person team, spearheading a greenfield order and item management platform at the core of Costco's retail operations—empowering thousands of warehouse and sales managers to efficiently manage shelf inventory and digital product listings.",
-        "Led the design and implementation a performant front-end stack using TypeScript, React, TanStack/Router, and TailwindCSS, improving critical inventory page load times to under 1 second.",
-        'Built a unified "save-all" feature consolidating multiple component states into a single, page-level state, reducing manual steps for warehouse managers and enhancing overall efficiency.',
-        "Developed a robust chip management system using a type-safe rule engine factory pattern, ensuring consistent validation and error handling, and enabling developers to introduce or update rules in minutes rather than hours.",
-        "Established front-end best practices around composable UIs, reusable components, and maintainable code structures, backed by robust testing tools (React Testing Library, Jest, Storybook, Playwright)—reducing regressions and ensuring predictable releases.",
-        "Collaborated closely with Product and Project Managers to refine user stories, clarify requirements, and guide implementation, ensuring alignment between technical deliverables and business objectives.",
-        "Mentored junior engineers through pair-programming sessions, targeted feedback, and hands-on code reviews, accelerating their growth in modern React patterns, TypeScript, and scalable front-end architectures.",
-      ],
+      description:
+        "Leading the charge on a core platform rebuild, focusing on modern architecture, performance, and mentoring a growing team to deliver impactful retail solutions.",
       citations: [3, 4, 5, 6, 7, 8, 9], // Corresponds to [cite: N] in RESUME.md
     },
     {
@@ -25,26 +18,16 @@ export const resumeData: ResumeData = {
       title: "Front-End Developer",
       dates: "March 2023 – December 2023",
       location: "Remote",
-      description: [
-        "Developed an online check-in system for Great Clips in a highly efficient two-person team, utilizing Next.js, React, and TypeScript to enhance user experience and system performance.",
-        "Crafted custom, accessible UI components—including a draggable bottom sheet and a responsive dropdown selector—aligning closely with design specifications and adhering to A11y standards.",
-        "Developed and maintained a versatile React-based design system and component library, now integral to Great Clips' marketing website's cohesive visual experience.",
-        "Closely collaborated with designer to interpret mockups and implement pixel-perfect UI in React and TypeScript.",
-        "Implemented a comprehensive suite of unit tests, achieving 95% test coverage, to ensure high-quality code and system integrity.",
-      ],
+      description:
+        "Sharpened focus on high-fidelity UI/UX and accessibility, collaborating closely with design to enhance a major client's digital check-in experience.",
       citations: [10, 11, 12, 13, 14],
     },
     {
       company: "Optum",
       title: "Software Engineer II",
       dates: "November 2021 - March 2023",
-      description: [
-        "Led development of a large-scale personalized dashboard using React, Redux, and Styled Components.",
-        "Mentored junior developers on best practices for component architecture and project documentation.",
-        "Reduced build times from 1 minute to 7 seconds by optimizing a Webpack configuration and adding caching.",
-        "Developed design patterns and standards for a team of engineers, resulting in increased efficiency and fewer errors.",
-        "Organized weekly brown-bag meetings that introduced multiple concepts to the team, such as React Concurrency, React Query, Playwright, etc.",
-      ],
+      description:
+        "Stepped into a leadership role, driving development on a large-scale dashboard, optimizing performance, and establishing best practices for the team.",
       citations: [15, 16, 17],
     },
     {
@@ -52,11 +35,8 @@ export const resumeData: ResumeData = {
       title: "Software Engineer",
       dates: "July 2021 - November 2021",
       location: "Chicago",
-      description: [
-        "Refined the development workflow for how multiple micro-services get spun up, decreasing build times by 20%.",
-        "Lead the migration of an Angular application to React, which reduced page load time by 70%.",
-        "Built out multiple features on a healthcare dashboard product that is actively used by tens of thousands of customers every single day.",
-      ],
+      description:
+        "Tackled significant technical challenges, leading a critical migration project and delivering key features for a widely-used healthcare product.",
       citations: [18, 19, 20],
     },
     {
@@ -64,14 +44,8 @@ export const resumeData: ResumeData = {
       title: "Software Engineer",
       dates: "July 2019 - July 2021",
       location: "Chicago, IL",
-      description: [
-        "Earned the leadership of a newly formed team, organized daily stand, and established a team culture that focuses on building applications with SOLID principles in mind.",
-        "Increased throughput of PostgreSQL database by 60% through optimizing queries and indexing.",
-        "Successfully completed an internal front-end project impacting multiple regional ad servers within 2 months by managing and coordinating development efforts.",
-        "Leveraged knowledge in Docker to create scalable microservices that are delivered through a CI/CD pipeline.",
-        "Built and maintained multiple backend REST API services with Docker and Kubernetes.",
-        "Developed and maintained multiple API services with Node.Js and Typescript that had 99.99% uptime.",
-      ],
+      description:
+        "Gained early leadership experience building foundational team practices while broadening technical skills across the stack, from database optimization to scalable microservices.",
       citations: [21, 22, 23, 24, 25],
     },
   ],
@@ -79,23 +53,57 @@ export const resumeData: ResumeData = {
     {
       name: "Order & Item Management Platform",
       company: "Costco",
-      description:
-        "Spearheaded the technical leadership for a core retail operations platform, enhancing inventory and product listing management for thousands of users with a modern React/TypeScript front-end.",
-      // logo: '/logos/costco.svg' // Example path
+      logoUrl: "/logos/costco-logo.svg",
+      challenge:
+        "Modernize Costco's core retail operations platform used by thousands of managers for inventory and product listings, which suffered from outdated technology and inefficient workflows.",
+      solution:
+        "Led the technical design and implementation of a new front-end using React, TypeScript, and TanStack Router. Developed a unified 'save-all' feature and a type-safe rule engine for managing product data.",
+      impact:
+        "Improved critical inventory page load times to under 1 second. Significantly reduced manual steps for warehouse managers and streamlined the process for updating product rules, enhancing overall operational efficiency.",
+      technologies: [
+        "React",
+        "TypeScript",
+        "TanStack Router",
+        "TailwindCSS",
+        "RTL",
+        "Playwright",
+      ],
     },
     {
       name: "Online Check-in System Enhancement",
       company: "Great Clips (via Livefront)",
-      description:
-        "Developed key features and accessible custom components for the high-traffic online check-in system, improving user experience and performance using Next.js and TypeScript.",
-      // logo: '/logos/great-clips.svg'
+      logoUrl: "/logos/great-clips-logo.svg",
+      challenge:
+        "Enhance the user experience and performance of the high-traffic Great Clips online check-in system while ensuring strict adherence to accessibility standards and design specifications.",
+      solution:
+        "Developed key features and custom, accessible UI components (like a draggable bottom sheet) using Next.js and TypeScript. Built and maintained a reusable component library integrated into their main marketing site.",
+      impact:
+        "Improved user satisfaction and system performance for millions of customers. Delivered pixel-perfect, accessible components, ensuring a cohesive brand experience across platforms. Achieved 95% unit test coverage.",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "A11y",
+        "React Testing Library",
+      ],
     },
     {
       name: "Personalized Member Dashboard",
       company: "Optum",
-      description:
-        "Led the development of a large-scale dashboard, significantly improving page load times and establishing development standards for the team using React and Redux.",
-      // logo: '/logos/optum.svg'
+      logoUrl: "/logos/optum-logo.svg",
+      challenge:
+        "Address performance bottlenecks and improve the development workflow for a large-scale personalized member dashboard used by tens of thousands of customers daily.",
+      solution:
+        "Led the development using React and Redux, optimizing Webpack configuration (reducing build times from 1 min to 7s), and migrating parts from Angular. Established team-wide design patterns and standards.",
+      impact:
+        "Reduced page load times by 70% after migration. Significantly decreased build times, improving developer productivity. Increased code quality and consistency through new standards and mentorship.",
+      technologies: [
+        "React",
+        "Redux",
+        "Styled Components",
+        "Webpack",
+        "Angular Migration",
+      ],
     },
   ],
   skills: [

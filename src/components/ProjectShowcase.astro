@@ -7,9 +7,10 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardFooter,
+  // CardDescription is removed as we structure content differently
+  // CardFooter is removed for now
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge"; // Using Badge for technologies
 
 const { projects } = resumeData;
 ---
@@ -20,66 +21,71 @@ const { projects } = resumeData;
   </h2>
 
   <p class='text-lg text-muted-foreground mb-12 max-w-3xl'>
-    Key projects I've delivered that demonstrate my expertise and impact.
+    Selected case studies demonstrating my approach and impact.
   </p>
 
-  <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+  <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
     {
       projects.map((project, index) => (
-        <Card className='group overflow-hidden border-border/40 transition-all duration-300 hover:border-primary/50 hover:shadow-md'>
-          <CardHeader className='pb-2'>
-            {/* Company logo or project icon */}
-            <div class='w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3 text-primary'>
-              <span class='font-mono font-bold'>
-                {project.company.substring(0, 2)}
-              </span>
+        <Card
+          key={index}
+          className='group flex flex-col justify-between overflow-hidden border border-border/40 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1'
+        >
+          <CardHeader className='pb-4'>
+            <div class='flex items-center justify-between mb-4'>
+              <CardTitle className='text-xl group-hover:text-primary transition-colors'>
+                {project.name}
+              </CardTitle>
+              {project.logoUrl && (
+                <img
+                  src={project.logoUrl}
+                  alt={`${project.company} logo`}
+                  class='h-8 w-auto object-contain filter grayscale group-hover:filter-none transition-all duration-300'
+                />
+              )}
             </div>
-            <CardTitle className='group-hover:text-primary transition-colors'>
-              {project.name}
-            </CardTitle>
-            <CardDescription className='flex items-center'>
+            <p class='text-sm font-medium text-muted-foreground'>
               {project.company}
-            </CardDescription>
+            </p>
           </CardHeader>
 
-          <CardContent>
-            <p class='text-sm text-muted-foreground'>{project.description}</p>
+          <CardContent className='flex-grow space-y-5'>
+            <div>
+              <h4 class='text-sm font-semibold uppercase tracking-wider text-primary/80 mb-1.5'>
+                Challenge
+              </h4>
+              <p class='text-sm text-muted-foreground'>{project.challenge}</p>
+            </div>
+            <div>
+              <h4 class='text-sm font-semibold uppercase tracking-wider text-primary/80 mb-1.5'>
+                Solution
+              </h4>
+              <p class='text-sm text-muted-foreground'>{project.solution}</p>
+            </div>
+            <div>
+              <h4 class='text-sm font-semibold uppercase tracking-wider text-primary/80 mb-1.5'>
+                Impact
+              </h4>
+              <p class='text-sm text-muted-foreground'>{project.impact}</p>
+            </div>
+          </CardContent>
 
-            {/* Add technologies if available in your data */}
-            {project.technologies && (
-              <div class='mt-4'>
-                <div class='flex flex-wrap gap-1.5 mt-2'>
+          <div class='p-6 pt-4'>
+            {project.technologies && project.technologies.length > 0 && (
+              <div>
+                <h5 class='text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2'>
+                  Key Technologies
+                </h5>
+                <div class='flex flex-wrap gap-1.5'>
                   {project.technologies.map((tech: string) => (
-                    <span class='text-xs bg-secondary/50 text-secondary-foreground px-2 py-0.5 rounded-full'>
+                    <Badge variant='secondary' className='text-xs font-medium'>
                       {tech}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
               </div>
             )}
-          </CardContent>
-
-          {/* If you have links to add */}
-          <CardFooter className='pt-0 text-sm text-muted-foreground opacity-70 group-hover:opacity-100 transition-opacity'>
-            <span class='flex items-center'>
-              <span class='mr-1'>View details</span>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='16'
-                height='16'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                class='transition-transform group-hover:translate-x-1'
-              >
-                <path d='M5 12h14' />
-                <path d='m12 5 7 7-7 7' />
-              </svg>
-            </span>
-          </CardFooter>
+          </div>
         </Card>
       ))
     }
@@ -87,12 +93,5 @@ const { projects } = resumeData;
 </Section>
 
 <style>
-  /* Optional: Add a subtle gradient hover effect */
-  .card-hover-gradient:hover {
-    background-image: linear-gradient(
-      to bottom right,
-      var(--card),
-      var(--accent-foreground) / 5%
-    );
-  }
+  /* Optional styles removed as inline Tailwind classes handle hover effects */
 </style>

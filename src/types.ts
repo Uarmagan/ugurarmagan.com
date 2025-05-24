@@ -3,16 +3,18 @@ export interface ExperienceItem {
   title: string;
   dates: string;
   location?: string; // Optional as some are remote
-  description: string[]; // Array of bullet points
+  description: string; // Changed from string[] to string
   citations?: number[]; // Optional source citations from RESUME.md
 }
 
 export interface ProjectItem {
   name: string; // e.g., "Order Management Platform"
   company: string; // e.g., "Costco"
-  description: string; // 1-2 sentence summary of role/impact from resume
+  logoUrl?: string; // Path to company logo
+  challenge: string; // The problem or goal
+  solution: string; // What you did
+  impact: string; // The results/outcome
   technologies?: string[]; // Optional: Key tech used
-  logo?: string; // Optional: Path to company logo (e.g., '/logos/costco.svg')
 }
 
 export interface ResumeData {
