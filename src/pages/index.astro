@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.tsx";
 import Hero from "../components/Hero.astro";
 import ExperienceTimeline from "../components/ExperienceTimeline.astro";
 import ProjectShowcase from "../components/ProjectShowcase.astro";
@@ -11,14 +10,13 @@ const currentYear = new Date().getFullYear();
 ---
 
 <Layout title={pageTitle}>
-  <div class='container mx-auto px-4 sm:px-6'>
-    <Nav client:load />
-    <main class='space-y-24 md:space-y-32'>
-      <Hero />
+  <main>
+    <Hero />
+    <div class='container mx-auto px-4 sm:px-6 space-y-24 md:space-y-32'>
       <ExperienceTimeline />
       <ProjectShowcase />
       <Contact />
-    </main>
+    </div>
     <footer class='py-8 mt-24 border-t border-border/20'>
       <div class='flex flex-col items-center justify-center space-y-4'>
         <div class='text-3xl font-bold font-heading'>UA</div>
