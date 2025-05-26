@@ -3,7 +3,7 @@ import { resumeData } from "../content/data";
 import Section from "./Section.astro";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Briefcase } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const { experience } = resumeData;
 ---
@@ -15,12 +15,12 @@ const { experience } = resumeData;
     My professional journey across various companies and roles.
   </p>
 
-  <div class='timeline-container relative max-w-6xl mx-auto'>
+  <div class='timeline-container relative max-w-6xl mx-auto overflow-hidden px-4 md:px-8'>
     <!-- Center Timeline -->
     <div class='absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full hidden md:block' />
     
     <!-- Year Indicators -->
-    <div class='hidden md:block'>
+    <div class='hidden lg:block'>
       {experience.map((item, index) => {
         // Extract year from dates like "May 2024-Present" or "March 2023 - December 2023"
         const dateMatch = item.dates.match(/(\d{4})/);
@@ -36,18 +36,18 @@ const { experience } = resumeData;
             {isCardOnLeft ? (
               /* Card is on left, so show year on right */
               <>
-                <span class='absolute left-full ml-16 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
+                <span class='absolute left-full ml-12 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
                   {year}
                 </span>
-                <div class='absolute left-full ml-6 top-1/2 -translate-y-1/2 w-8 h-[1px] bg-primary/20' />
+                <div class='absolute left-full ml-4 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-primary/20' />
               </>
             ) : (
               /* Card is on right, so show year on left */
               <>
-                <span class='absolute right-full mr-16 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
+                <span class='absolute right-full mr-12 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
                   {year}
                 </span>
-                <div class='absolute right-full mr-6 top-1/2 -translate-y-1/2 w-8 h-[1px] bg-primary/20' />
+                <div class='absolute right-full mr-4 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-primary/20' />
               </>
             )}
           </div>
@@ -77,7 +77,7 @@ const { experience } = resumeData;
         <div class={`md:grid md:grid-cols-2 md:gap-12 ${index % 2 === 0 ? '' : 'md:direction-rtl'}`}>
           
           <!-- Card -->
-          <div class={`ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:order-2'}`}>
+          <div class={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:order-2'}`}>
             <Card 
               className={`timeline-card relative border border-border/50 
                 transition-all duration-300 hover:shadow-lg hover:border-border/80
@@ -85,16 +85,16 @@ const { experience } = resumeData;
             >
               <CardContent className='p-0'>
                 <!-- Header Section -->
-                <div class='p-6 border-b border-border/10'>
-                  <div class='flex items-start justify-between gap-4'>
+                <div class='p-4 sm:p-6 border-b border-border/10'>
+                  <div class='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3'>
                     <!-- Company Info -->
-                    <div class='flex items-start gap-4'>
-                      <div class='relative w-12 h-12 rounded-xl flex items-center justify-center font-bold text-sm bg-gradient-to-br from-muted/80 to-muted/60 text-muted-foreground flex-shrink-0'>
+                    <div class='flex items-start gap-3 sm:gap-4 min-w-0'>
+                      <div class='relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-bold text-sm bg-gradient-to-br from-muted/80 to-muted/60 text-muted-foreground flex-shrink-0'>
                         <span>{item.company.substring(0, 2).toUpperCase()}</span>
                       </div>
-                      <div class='flex-1'>
+                      <div class='flex-1 min-w-0'>
                         <div class='flex items-center gap-2 flex-wrap'>
-                          <h3 class='font-semibold text-lg'>{item.company}</h3>
+                          <h3 class='font-semibold text-base sm:text-lg'>{item.company}</h3>
                           {index === 0 && (
                             <span class='inline-flex items-center gap-1 px-2 py-0.5 text-[10px] uppercase tracking-wide bg-primary/10 text-primary rounded-full border border-primary/20 font-medium'>
                               Current
@@ -108,8 +108,8 @@ const { experience } = resumeData;
                     </div>
                     
                     <!-- Date Badge -->
-                    <div class='flex flex-col items-end gap-1 flex-shrink-0'>
-                      <span class='text-sm font-mono text-muted-foreground'>
+                    <div class='flex flex-col items-start lg:items-end gap-1 flex-shrink-0 mt-2 lg:mt-0'>
+                      <span class='text-xs sm:text-sm font-mono text-muted-foreground break-words'>
                         {item.dates}
                       </span>
                       {item.location && (
@@ -123,8 +123,8 @@ const { experience } = resumeData;
                 </div>
                 
                 <!-- Description Section -->
-                <div class='p-6'>
-                  <p class='text-muted-foreground leading-relaxed text-[15px]'>
+                <div class='p-4 sm:p-6'>
+                  <p class='text-muted-foreground leading-relaxed text-sm sm:text-[15px]'>
                     {item.description}
                   </p>
                 </div>

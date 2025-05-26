@@ -55,11 +55,11 @@ export const resumeData: ResumeData = {
       company: "Costco",
       logoUrl: "/logos/costco-logo.svg",
       challenge:
-        "Modernize Costco's core retail operations platform used by thousands of managers for inventory and product listings, which suffered from outdated technology and inefficient workflows.",
+        "Costco needed a complete replacement for their order management system. The legacy platform was a command line application that required warehouse managers to be technical and navigate through multiple screens for simple tasks. The system was also slow and not scalable.",
       solution:
-        "Led the technical design and implementation of a new front-end using React, TypeScript, and TanStack Router. Developed a unified 'save-all' feature and a type-safe rule engine for managing product data.",
+        "As technical lead for an 8-person team, designed the architecture for a greenfield platform. Built a unified 'save-all' feature that consolidated component states and developed a type-safe rule engine for managing product data.",
       impact:
-        "Improved critical inventory page load times to under 1 second. Significantly reduced manual steps for warehouse managers and streamlined the process for updating product rules, enhancing overall operational efficiency.",
+        "Reduced inventory page load times to under 1 second. The new platform streamlines warehouse operations with single-step workflows and serves thousands of managers daily.",
       technologies: [
         "React",
         "TypeScript",
@@ -70,15 +70,15 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      name: "Online Check-in System Enhancement",
+      name: "Online Check-in System",
       company: "Great Clips (via Livefront)",
       logoUrl: "/logos/great-clips-logo.svg",
       challenge:
-        "Enhance the user experience and performance of the high-traffic Great Clips online check-in system while ensuring strict adherence to accessibility standards and design specifications.",
+        "Great Clips needed a modern check-in system for 4,500 salons across North America. The existing system lacked mobile support and didn't meet accessibility standards for millions of users.",
       solution:
-        "Developed key features and custom, accessible UI components (like a draggable bottom sheet) using Next.js and TypeScript. Built and maintained a reusable component library integrated into their main marketing site.",
+        "Co-developed a new check-in platform from scratch using Next.js and React. Created custom accessible UI components including a draggable bottom sheet for mobile. Built and maintained a design system integrated with their marketing site.",
       impact:
-        "Improved user satisfaction and system performance for millions of customers. Delivered pixel-perfect, accessible components, ensuring a cohesive brand experience across platforms. Achieved 95% unit test coverage.",
+        "The system now serves millions of users with full accessibility compliance. Achieved 95% test coverage and delivered pixel-perfect UI that works seamlessly across all devices.",
       technologies: [
         "Next.js",
         "React",
@@ -88,15 +88,15 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      name: "Personalized Member Dashboard",
+      name: "UnitedHealthcare Portal Dashboard",
       company: "Optum",
       logoUrl: "/logos/optum-logo.svg",
       challenge:
-        "Address performance bottlenecks and improve the development workflow for a large-scale personalized member dashboard used by tens of thousands of customers daily.",
+        "UnitedHealthcare's main portal dashboard served hundreds of thousands of users but suffered from slow performance and hour-long build times that killed developer productivity.",
       solution:
-        "Led the development using React and Redux, optimizing Webpack configuration (reducing build times from 1 min to 7s), and migrating parts from Angular. Established team-wide design patterns and standards.",
+        "Led the Angular to React migration and optimized the entire build pipeline. Introduced modern development practices including proper testing, documentation, and ran weekly knowledge-sharing sessions for the team.",
       impact:
-        "Reduced page load times by 70% after migration. Significantly decreased build times, improving developer productivity. Increased code quality and consistency through new standards and mentorship.",
+        "Reduced page load time by 70% and build times from 60 seconds to 7 seconds. The dashboard now reliably serves hundreds of thousands of members daily with improved performance.",
       technologies: [
         "React",
         "Redux",
