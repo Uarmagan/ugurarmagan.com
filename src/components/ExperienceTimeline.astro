@@ -1,14 +1,9 @@
 ---
 import { resumeData } from "../content/data";
 import Section from "./Section.astro";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { MapPin, Calendar, Briefcase } from "lucide-react";
 
 const { experience } = resumeData;
 ---
@@ -20,52 +15,134 @@ const { experience } = resumeData;
     My professional journey across various companies and roles.
   </p>
 
-  <Card className='border-border/40 bg-card/50 backdrop-blur-sm'>
-    <CardHeader>
-      <CardTitle>Work</CardTitle>
-    </CardHeader>
-    <CardContent className='space-y-6 p-6'>
-      {
-        experience.map((item, index) => (
-          <div class='flex items-center justify-between gap-4'>
-            <div class='flex items-center gap-4'>
-              <div class='h-10 w-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-mono'>
-                {item.company.substring(0, 2).toUpperCase()}
-              </div>
-              <div>
-                <p class='font-semibold text-foreground'>{item.company}</p>
-                <p class='text-sm text-muted-foreground'>{item.title}</p>
-              </div>
-            </div>
-
-            <div class='text-right'>
-              <time class='font-mono text-sm text-muted-foreground whitespace-nowrap'>
-                {item.dates}
-              </time>
-              {item.location && (
-                <p class='text-xs text-muted-foreground/70'>
-                  ({item.location})
-                </p>
-              )}
-            </div>
+  <div class='timeline-container relative max-w-6xl mx-auto'>
+    <!-- Center Timeline -->
+    <div class='absolute left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 rounded-full hidden md:block' />
+    
+    {experience.map((item, index) => (
+      <div class='timeline-item relative mb-12 last:mb-0 md:mb-16' data-index={index}>
+        <!-- Timeline dot on center line -->
+        <div class='hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10'>
+          <div class='relative'>
+            <div class={`w-5 h-5 rounded-full bg-primary 
+              ring-4 ring-background shadow-lg transition-all duration-300 hover:scale-125`} />
+            {index === 0 && (
+              <div class='absolute inset-0 bg-primary rounded-full animate-ping' />
+            )}
           </div>
-        ))
-      }
-    </CardContent>
-    <CardFooter className='justify-center'>
-      <Button variant='outline' asChild>
-        <a
-          href='/UgurArmagan-Resume.pdf'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          View Full Resume
-        </a>
-      </Button>
-    </CardFooter>
-  </Card>
+        </div>
+        
+        <!-- Connector lines from timeline to cards -->
+        <div class={`hidden md:block absolute left-1/2 top-1/2 -translate-y-1/2 ${index % 2 === 0 ? '-translate-x-full' : ''} 
+          w-1/2 h-[2px] bg-gradient-to-r ${index % 2 === 0 
+            ? 'from-primary/20 to-primary/50' 
+            : 'from-primary/50 to-primary/20'}`} />
+        
+        <div class={`md:grid md:grid-cols-2 md:gap-12 ${index % 2 === 0 ? '' : 'md:direction-rtl'}`}>
+          
+          <!-- Card -->
+          <div class={`ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:order-2'}`}>
+            <Card 
+              className={`timeline-card relative border border-border/50 
+                transition-all duration-300 hover:shadow-lg hover:border-border/80
+                ${index === 0 ? 'ring-1 ring-primary/20 shadow-md' : ''}`}
+            >
+              <CardContent className='p-0'>
+                <!-- Header Section -->
+                <div class='p-6 border-b border-border/10'>
+                  <div class='flex items-start justify-between gap-4'>
+                    <!-- Company Info -->
+                    <div class='flex items-start gap-4'>
+                      <div class='relative w-12 h-12 rounded-xl flex items-center justify-center font-bold text-sm bg-gradient-to-br from-muted/80 to-muted/60 text-muted-foreground flex-shrink-0'>
+                        <span>{item.company.substring(0, 2).toUpperCase()}</span>
+                      </div>
+                      <div class='flex-1'>
+                        <div class='flex items-center gap-2 flex-wrap'>
+                          <h3 class='font-semibold text-lg'>{item.company}</h3>
+                          {index === 0 && (
+                            <span class='inline-flex items-center gap-1 px-2 py-0.5 text-[10px] uppercase tracking-wide bg-primary/10 text-primary rounded-full border border-primary/20 font-medium'>
+                              Current
+                            </span>
+                          )}
+                        </div>
+                        <p class='text-sm text-muted-foreground mt-0.5'>
+                          {item.title}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <!-- Date Badge -->
+                    <div class='flex flex-col items-end gap-1 flex-shrink-0'>
+                      <span class='text-sm font-mono text-muted-foreground'>
+                        {item.dates}
+                      </span>
+                      {item.location && (
+                        <span class='text-xs text-muted-foreground/80 flex items-center gap-1'>
+                          <MapPin className='w-3 h-3' />
+                          {item.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Description Section -->
+                <div class='p-6'>
+                  <p class='text-muted-foreground leading-relaxed text-[15px]'>
+                    {item.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <!-- Empty space for timeline -->
+          <div class={`hidden md:block ${index % 2 === 0 ? '' : 'md:order-1'}`} />
+        </div>
+
+        <!-- Mobile timeline dot -->
+        <div class='md:hidden absolute left-6 top-12'>
+          <div class={`w-4 h-4 rounded-full bg-primary 
+            ring-4 ring-background shadow-lg`} />
+          {index === 0 && (
+            <div class='absolute inset-0 bg-primary rounded-full animate-ping' />
+          )}
+        </div>
+      </div>
+    ))}
+    
+    <!-- Mobile timeline line -->
+    <div class='md:hidden absolute left-6 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 rounded-full' />
+  </div>
+
+  <div class='mt-12 text-center'>
+    <Button variant='outline' asChild>
+      <a href='/Ugur-Armagan-2025.pdf' target='_blank' rel='noopener noreferrer'>
+        View Full Resume
+      </a>
+    </Button>
+  </div>
 </Section>
 
 <style>
-  /* Empty style block */
+  .timeline-item {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .timeline-item[data-index="0"] { animation-delay: 0.1s; }
+  .timeline-item[data-index="1"] { animation-delay: 0.2s; }
+  .timeline-item[data-index="2"] { animation-delay: 0.3s; }
+  .timeline-item[data-index="3"] { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>
