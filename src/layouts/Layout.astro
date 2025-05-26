@@ -1,0 +1,116 @@
+---
+import "../styles/globals.css"; // Import the global styles
+
+// Added Props interface
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang='en' class='dark scroll-smooth'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <meta
+      name='description'
+      content='Portfolio of Ugur Armagan, Senior Frontend Developer'
+    />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap'
+      rel='stylesheet'
+    />
+    <title>{title}</title>
+    <style is:global>
+      ::selection {
+        background-color: theme("colors.primary.700");
+        color: theme("colors.gray.100");
+      }
+    </style>
+  </head>
+  <body
+    class='font-sans bg-background text-foreground antialiased min-h-screen relative overflow-x-hidden'
+  >
+    <!-- Gradient background effects -->
+    <div class='fixed inset-0 -z-10 h-full w-full bg-background'>
+      <div
+        class='absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-br from-primary/5 via-primary/2 to-transparent blur-3xl'
+        aria-hidden='true'
+      >
+      </div>
+      <div
+        class='absolute bottom-0 right-0 left-0 h-[500px] bg-gradient-to-tr from-secondary/5 via-secondary/2 to-transparent blur-3xl'
+        aria-hidden='true'
+      >
+      </div>
+    </div>
+
+    <!-- Noise texture overlay -->
+    <div
+      class="fixed inset-0 -z-10 bg-[url('/noise.svg')] opacity-[0.03]"
+      aria-hidden='true'
+    >
+    </div>
+
+    <!-- Main content -->
+    <slot />
+
+    <!-- Scroll to top button - can be implemented in a script -->
+    <button
+      id='scroll-top'
+      aria-label='Scroll to top'
+      class='fixed bottom-6 right-6 p-2 rounded-full bg-primary/80 text-primary-foreground shadow-md opacity-0 transition-opacity duration-300 hover:bg-primary'
+      style='display: none;'
+    >
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='2'
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        class='lucide lucide-chevron-up'
+      >
+        <path d='m18 15-6-6-6 6'></path>
+      </svg>
+    </button>
+  </body>
+</html>
+
+<script>
+  // Scroll to top button functionality
+  const scrollTopButton = document.getElementById("scroll-top");
+
+  if (scrollTopButton) {
+    // Show button when scrolled down
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollTopButton.style.display = "block";
+        setTimeout(() => {
+          scrollTopButton.style.opacity = "1";
+        }, 50);
+      } else {
+        scrollTopButton.style.opacity = "0";
+        setTimeout(() => {
+          scrollTopButton.style.display = "none";
+        }, 300);
+      }
+    });
+
+    // Scroll to top when clicked
+    scrollTopButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+</script>
