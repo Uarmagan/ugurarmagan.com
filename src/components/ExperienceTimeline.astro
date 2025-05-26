@@ -17,7 +17,43 @@ const { experience } = resumeData;
 
   <div class='timeline-container relative max-w-6xl mx-auto'>
     <!-- Center Timeline -->
-    <div class='absolute left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 rounded-full hidden md:block' />
+    <div class='absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full hidden md:block' />
+    
+    <!-- Year Indicators -->
+    <div class='hidden md:block'>
+      {experience.map((item, index) => {
+        // Extract year from dates like "May 2024-Present" or "March 2023 - December 2023"
+        const dateMatch = item.dates.match(/(\d{4})/);
+        const year = dateMatch ? dateMatch[1] : '';
+        const isCardOnLeft = index % 2 === 0; // Even index = card on left
+        
+        return (
+          <div 
+            class='absolute left-1/2 -translate-x-1/2 z-20'
+            style={`top: ${index * (100 / experience.length) + (50 / experience.length)}%`}
+          >
+            {/* Show year on opposite side of card */}
+            {isCardOnLeft ? (
+              /* Card is on left, so show year on right */
+              <>
+                <span class='absolute left-full ml-16 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
+                  {year}
+                </span>
+                <div class='absolute left-full ml-6 top-1/2 -translate-y-1/2 w-8 h-[1px] bg-primary/20' />
+              </>
+            ) : (
+              /* Card is on right, so show year on left */
+              <>
+                <span class='absolute right-full mr-16 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
+                  {year}
+                </span>
+                <div class='absolute right-full mr-6 top-1/2 -translate-y-1/2 w-8 h-[1px] bg-primary/20' />
+              </>
+            )}
+          </div>
+        );
+      })}
+    </div>
     
     {experience.map((item, index) => (
       <div class='timeline-item relative mb-12 last:mb-0 md:mb-16' data-index={index}>
@@ -101,18 +137,20 @@ const { experience } = resumeData;
         </div>
 
         <!-- Mobile timeline dot -->
-        <div class='md:hidden absolute left-6 top-12'>
-          <div class={`w-4 h-4 rounded-full bg-primary 
-            ring-4 ring-background shadow-lg`} />
-          {index === 0 && (
-            <div class='absolute inset-0 bg-primary rounded-full animate-ping' />
-          )}
+        <div class='md:hidden absolute left-6 top-12 -translate-x-1/2'>
+          <div class='relative'>
+            <div class={`w-4 h-4 rounded-full bg-primary 
+              ring-4 ring-background shadow-lg`} />
+            {index === 0 && (
+              <div class='absolute inset-0 bg-primary rounded-full animate-ping' />
+            )}
+          </div>
         </div>
       </div>
     ))}
     
     <!-- Mobile timeline line -->
-    <div class='md:hidden absolute left-6 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 rounded-full' />
+    <div class='md:hidden absolute left-6 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full' />
   </div>
 
   <div class='mt-12 text-center'>
