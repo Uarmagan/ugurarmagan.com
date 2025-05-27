@@ -16,25 +16,20 @@ const { experience } = resumeData;
   </p>
 
   <div class='timeline-container relative max-w-6xl mx-auto overflow-hidden px-4 md:px-8'>
-    <!-- Center Timeline -->
     <div class='absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full hidden md:block' />
     
-    <!-- Year Indicators -->
     <div class='hidden lg:block'>
       {experience.map((item, index) => {
-        // Extract year from dates like "May 2024-Present" or "March 2023 - December 2023"
         const dateMatch = item.dates.match(/(\d{4})/);
         const year = dateMatch ? dateMatch[1] : '';
-        const isCardOnLeft = index % 2 === 0; // Even index = card on left
+        const isCardOnLeft = index % 2 === 0; 
         
         return (
           <div 
             class='absolute left-1/2 -translate-x-1/2 z-20'
             style={`top: ${index * (100 / experience.length) + (50 / experience.length)}%`}
           >
-            {/* Show year on opposite side of card */}
             {isCardOnLeft ? (
-              /* Card is on left, so show year on right */
               <>
                 <span class='absolute left-full ml-12 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
                   {year}
@@ -42,7 +37,6 @@ const { experience } = resumeData;
                 <div class='absolute left-full ml-4 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-primary/20' />
               </>
             ) : (
-              /* Card is on right, so show year on left */
               <>
                 <span class='absolute right-full mr-12 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
                   {year}
@@ -57,7 +51,6 @@ const { experience } = resumeData;
     
     {experience.map((item, index) => (
       <div class='timeline-item relative mb-12 last:mb-0 md:mb-16' data-index={index}>
-        <!-- Timeline dot on center line -->
         <div class='hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10'>
           <div class='relative'>
             <div class={`w-5 h-5 rounded-full bg-primary 
@@ -68,7 +61,6 @@ const { experience } = resumeData;
           </div>
         </div>
         
-        <!-- Connector lines from timeline to cards -->
         <div class={`hidden md:block absolute left-1/2 top-1/2 -translate-y-1/2 ${index % 2 === 0 ? '-translate-x-full' : ''} 
           w-1/2 h-[2px] bg-gradient-to-r ${index % 2 === 0 
             ? 'from-primary/20 to-primary/50' 
@@ -76,7 +68,6 @@ const { experience } = resumeData;
         
         <div class={`md:grid md:grid-cols-2 md:gap-12 ${index % 2 === 0 ? '' : 'md:direction-rtl'}`}>
           
-          <!-- Card -->
           <div class={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:order-2'}`}>
             <Card 
               className={`timeline-card relative border border-border/50 
@@ -84,10 +75,8 @@ const { experience } = resumeData;
                 ${index === 0 ? 'ring-1 ring-primary/20 shadow-md' : ''}`}
             >
               <CardContent className='p-0'>
-                <!-- Header Section -->
                 <div class='p-4 sm:p-6 border-b border-border/10'>
                   <div class='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3'>
-                    <!-- Company Info -->
                     <div class='flex items-start gap-3 sm:gap-4 min-w-0'>
                       <div class='relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-bold text-sm bg-gradient-to-br from-muted/80 to-muted/60 text-muted-foreground flex-shrink-0'>
                         <span>{item.company.substring(0, 2).toUpperCase()}</span>
@@ -107,7 +96,6 @@ const { experience } = resumeData;
                       </div>
                     </div>
                     
-                    <!-- Date Badge -->
                     <div class='flex flex-col items-start lg:items-end gap-1 flex-shrink-0 mt-2 lg:mt-0'>
                       <span class='text-xs sm:text-sm font-mono text-muted-foreground break-words'>
                         {item.dates}
@@ -122,7 +110,6 @@ const { experience } = resumeData;
                   </div>
                 </div>
                 
-                <!-- Description Section -->
                 <div class='p-4 sm:p-6'>
                   <p class='text-muted-foreground leading-relaxed text-sm sm:text-[15px]'>
                     {item.description}
@@ -132,11 +119,9 @@ const { experience } = resumeData;
             </Card>
           </div>
 
-          <!-- Empty space for timeline -->
           <div class={`hidden md:block ${index % 2 === 0 ? '' : 'md:order-1'}`} />
         </div>
 
-        <!-- Mobile timeline dot -->
         <div class='md:hidden absolute left-6 top-12 -translate-x-1/2'>
           <div class='relative'>
             <div class={`w-4 h-4 rounded-full bg-primary 
@@ -149,13 +134,12 @@ const { experience } = resumeData;
       </div>
     ))}
     
-    <!-- Mobile timeline line -->
     <div class='md:hidden absolute left-6 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full' />
   </div>
 
   <div class='mt-12 text-center'>
     <Button variant='outline' asChild>
-      <a href='/Ugur-Armagan-2025.pdf' target='_blank' rel='noopener noreferrer'>
+      <a href='/Ugur-Armagan-2025.pdf' target='blank' rel='noopener noreferrer'>
         View Full Resume
       </a>
     </Button>

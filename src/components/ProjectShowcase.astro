@@ -7,7 +7,6 @@ import { Users, CheckCircle2, Zap, ArrowDown } from "lucide-react";
 
 const { projects } = resumeData;
 
-// Extract key metrics from project impacts
 const projectMetrics = {
   costco: {
     primary: { value: "<1s", label: "Load Time", icon: Zap },
@@ -23,7 +22,6 @@ const projectMetrics = {
   }
 };
 
-// Helper to get metrics for a project
 function getProjectMetrics(company: string) {
   const key = company.toLowerCase().replace(/[^a-z]/g, '');
   if (key.includes('costco')) return projectMetrics.costco;
@@ -42,7 +40,6 @@ function getProjectMetrics(company: string) {
     Selected case studies demonstrating my approach and impact.
   </p>
 
-  <!-- Bento Grid Layout -->
   <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
     {
       projects.map((project, index) => {
@@ -55,7 +52,6 @@ function getProjectMetrics(company: string) {
           >
             <Card className='h-full border border-border/40 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1'>
               <CardContent className='p-0 h-full flex flex-col'>
-                {/* Header Section */}
                 <div class='p-6'>
                   <p class='text-sm font-medium text-muted-foreground mb-1'>
                     {project.company}
@@ -65,7 +61,6 @@ function getProjectMetrics(company: string) {
                   </h3>
                 </div>
 
-                {/* Impact Metrics Section */}
                 {metrics && (
                   <div class='px-6 pb-6'>
                     <div class='bg-muted/5 rounded-lg p-4 pl-0'>
@@ -94,7 +89,6 @@ function getProjectMetrics(company: string) {
                   </div>
                 )}
 
-                {/* Challenge & Solution Section */}
                 <div class='flex-1 px-6 pb-2'>
                   <div class='space-y-4'>
                     <div>
@@ -121,7 +115,6 @@ function getProjectMetrics(company: string) {
                   </div>
                 </div>
 
-                {/* Technologies Footer */}
                 {project.technologies && project.technologies.length > 0 && (
                   <div class='p-6 mt-auto'>
                     <div class='border-t border-border/10 pt-4'>
@@ -169,7 +162,6 @@ function getProjectMetrics(company: string) {
     }
   }
 
-  /* Tech pill float animation */
   .tech-pill {
     opacity: 0;
     animation: pillFadeIn 0.5s ease-out forwards;
@@ -186,7 +178,6 @@ function getProjectMetrics(company: string) {
     }
   }
 
-  /* Metric pulse animation */
   @keyframes metricPulse {
     0%, 100% {
       transform: scale(1);
@@ -202,7 +193,6 @@ function getProjectMetrics(company: string) {
 </style>
 
 <script>
-  // Count up animation for metrics
   function animateValue(element: HTMLElement, start: number, end: number, duration: number, suffix: string = '') {
     const range = end - start;
     const minTimer = 50;
@@ -213,7 +203,6 @@ function getProjectMetrics(company: string) {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Easing function
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const current = Math.floor(start + (range * easeOutQuart));
       
@@ -227,7 +216,6 @@ function getProjectMetrics(company: string) {
     }, stepTime);
   }
 
-  // Set up intersection observer for metrics
   const metricObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -238,30 +226,25 @@ function getProjectMetrics(company: string) {
           
           setTimeout(() => {
             if (value.includes('<')) {
-              // For "<1s" type values
               animateValue(element, 5, 1, 1000, 's');
               setTimeout(() => {
                 element.textContent = value;
               }, 1100);
             } else if (value.includes('%')) {
-              // For percentage values
               const num = parseInt(value);
               animateValue(element, 0, num, 1500, '%');
             } else if (value.includes('+')) {
-              // For "1M+" or "10K+" type values
               const num = parseInt(value.replace(/[^\d]/g, ''));
               const suffix = value.includes('M') ? 'M+' : 'K+';
               animateValue(element, 0, num, 1500, suffix);
             } else if (value.includes('s')) {
-              // For "1000s" type values
               const num = parseInt(value);
               animateValue(element, 0, num, 1500, 's');
             } else {
-              // Default case
               element.textContent = value;
               element.classList.add('complete');
             }
-          }, index * 200); // Stagger animations
+          }, index * 200); 
         });
         
         metricObserver.unobserve(entry.target);
@@ -271,7 +254,6 @@ function getProjectMetrics(company: string) {
     threshold: 0.5
   });
 
-  // Observe all project cards
   document.querySelectorAll('.project-card').forEach(card => {
     metricObserver.observe(card);
   });

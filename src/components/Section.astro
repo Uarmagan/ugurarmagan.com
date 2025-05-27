@@ -8,7 +8,6 @@ interface Props {
 
 const { id, className, variant = "fade", delay = 0 } = Astro.props;
 
-// Animation classes based on variant
 const animationClasses = {
   default: "opacity-0 transition-opacity duration-700 ease-out",
   fade: "opacity-0 transition-opacity duration-700 ease-out",
@@ -21,7 +20,6 @@ const combinedClasses = [baseClasses, variantClasses, className]
   .filter(Boolean)
   .join(" ");
 
-// Create data attribute with animation info
 const dataAttrs = {
   "data-section-animate": true,
   "data-animation-variant": variant,
@@ -46,12 +44,10 @@ const dataAttrs = {
           const variant = section.dataset.animationVariant || "fade";
           const delay = parseInt(section.dataset.animationDelay || "0");
 
-          // Apply timeout based on delay
           setTimeout(() => {
             section.classList.remove("opacity-0");
             section.classList.add("opacity-100");
 
-            // For slide-up variant
             if (variant === "slide-up") {
               section.classList.remove("translate-y-4");
               section.classList.add("translate-y-0");
@@ -64,7 +60,7 @@ const dataAttrs = {
     },
     {
       threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px", // Trigger a bit earlier
+      rootMargin: "0px 0px -100px 0px", 
     }
   );
 
