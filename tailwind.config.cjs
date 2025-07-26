@@ -14,6 +14,31 @@ module.exports = {
       },
     },
     extend: {
+      spacing: {
+        // Micro spacing - for tight layouts, form elements
+        'micro-xs': '0.25rem',  // 4px
+        'micro-sm': '0.5rem',   // 8px
+        'micro-md': '0.75rem',  // 12px
+        'micro-lg': '1rem',     // 16px
+
+        // Component spacing - within components
+        'component-xs': '1.25rem', // 20px
+        'component-sm': '1.5rem',  // 24px
+        'component-md': '2rem',    // 32px
+        'component-lg': '3rem',    // 48px
+
+        // Section spacing - between major sections
+        'section-xs': '4rem',    // 64px
+        'section-sm': '5rem',    // 80px
+        'section-md': '6rem',    // 96px
+        'section-lg': '8rem',    // 128px
+        'section-xl': '10rem',   // 160px
+
+        // Layout spacing - for major layout divisions
+        'layout-sm': '12.5rem',  // 200px
+        'layout-md': '15rem',    // 240px
+        'layout-lg': '20rem',    // 320px
+      },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         heading: ["Lora", "serif"],
@@ -74,6 +99,19 @@ module.exports = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1.2' }],
+        '6xl': ['3.75rem', { lineHeight: '1.1' }],
+        '7xl': ['4.5rem', { lineHeight: '1.05' }],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out",

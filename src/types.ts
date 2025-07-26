@@ -4,6 +4,7 @@ export interface ExperienceItem {
   dates: string;
   location?: string; // Optional as some are remote
   description: string; // Changed from string[] to string
+  logoUrl?: string; // Path to company logo
   citations?: number[]; // Optional source citations from RESUME.md
 }
 

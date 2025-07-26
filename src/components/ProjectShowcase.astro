@@ -16,7 +16,7 @@ const projectMetrics = {
     primary: { value: "4.5K", label: "Salons Served", icon: Users },
     secondary: { value: "95%", label: "Test Coverage", icon: CheckCircle2 }
   },
-  optum: {
+  unitedHealthcare: {
     primary: { value: "70%", label: "Faster Loads", icon: Zap },
     secondary: { value: "100K+", label: "Daily Users", icon: Users }
   }
@@ -26,21 +26,21 @@ function getProjectMetrics(company: string) {
   const key = company.toLowerCase().replace(/[^a-z]/g, '');
   if (key.includes('costco')) return projectMetrics.costco;
   if (key.includes('great')) return projectMetrics.greatClips;
-  if (key.includes('optum')) return projectMetrics.optum;
+  if (key.includes('united')) return projectMetrics.unitedHealthcare;
   return null;
 }
 ---
 
 <Section id='projects' variant='slide-up'>
-  <h2 class='text-3xl md:text-4xl font-bold font-heading mb-8'>
+  <h2 class='text-3xl md:text-4xl font-bold font-heading mb-component-md'>
     Project Highlights
   </h2>
 
-  <p class='text-lg text-muted-foreground mb-12 max-w-3xl'>
+  <p class='text-lg text-muted-foreground mb-component-lg max-w-3xl'>
     Selected case studies demonstrating my approach and impact.
   </p>
 
-  <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
+  <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-component-md max-w-7xl mx-auto'>
     {
       projects.map((project, index) => {
         const metrics = getProjectMetrics(project.company);
@@ -50,10 +50,10 @@ function getProjectMetrics(company: string) {
             class='project-card relative group'
             data-project-index={index}
           >
-            <Card className='h-full border border-border/40 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1'>
+            <Card className='h-full glass shadow-elevation-low shadow-hover transition-all duration-300 hover:border-primary/60 hover:shadow-elevation-high focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/25 hover:shadow-elevation-medium hover:-translate-y-1'>
               <CardContent className='p-0 h-full flex flex-col'>
                 <div class='p-6'>
-                  <p class='text-sm font-medium text-muted-foreground mb-1'>
+                  <p class='text-sm font-medium text-muted-foreground/90 mb-1'>
                     {project.company}
                   </p>
                   <h3 class='text-xl font-semibold'>
@@ -62,7 +62,7 @@ function getProjectMetrics(company: string) {
                 </div>
 
                 {metrics && (
-                  <div class='px-6 pb-6'>
+                  <div class='px-component-md pb-component-md'>
                     <div class='bg-muted/5 rounded-lg p-4 pl-0'>
                       <div class='grid grid-cols-2 gap-4'>
                         <div>
@@ -70,7 +70,7 @@ function getProjectMetrics(company: string) {
                             <metrics.primary.icon className='w-3.5 h-3.5' />
                             <span class='text-[11px] uppercase tracking-wider font-medium'>{metrics.primary.label}</span>
                           </div>
-                          <div class='font-mono font-bold text-2xl text-foreground metric-value' data-value={metrics.primary.value}>
+                          <div class='font-mono font-bold text-xl text-foreground metric-value' data-value={metrics.primary.value}>
                             0
                           </div>
                         </div>
@@ -80,7 +80,7 @@ function getProjectMetrics(company: string) {
                             <metrics.secondary.icon className='w-3.5 h-3.5' />
                             <span class='text-[11px] uppercase tracking-wider font-medium'>{metrics.secondary.label}</span>
                           </div>
-                          <div class='font-mono font-bold text-2xl text-foreground metric-value' data-value={metrics.secondary.value}>
+                          <div class='font-mono font-bold text-xl text-foreground metric-value' data-value={metrics.secondary.value}>
                             0
                           </div>
                         </div>
@@ -89,18 +89,18 @@ function getProjectMetrics(company: string) {
                   </div>
                 )}
 
-                <div class='flex-1 px-6 pb-2'>
-                  <div class='space-y-4'>
+                <div class='flex-1 px-component-md pb-micro-sm'>
+                  <div class='space-y-component-xs'>
                     <div>
                       <h4 class='text-xs font-semibold uppercase tracking-wider text-primary/80 mb-1.5'>
                         Challenge
                       </h4>
-                      <p class='text-sm text-muted-foreground leading-relaxed'>
+                      <p class='text-sm text-muted-foreground/90 leading-relaxed'>
                         {project.challenge}
                       </p>
                     </div>
                     
-                    <div class='flex items-center justify-center py-1'>
+                    <div class='flex items-center justify-center py-micro-xs'>
                       <ArrowDown className='w-3.5 h-3.5 text-primary/20' />
                     </div>
                     
@@ -108,7 +108,7 @@ function getProjectMetrics(company: string) {
                       <h4 class='text-xs font-semibold uppercase tracking-wider text-primary/80 mb-1.5'>
                         Solution
                       </h4>
-                      <p class='text-sm text-muted-foreground leading-relaxed'>
+                      <p class='text-sm text-muted-foreground/90 leading-relaxed'>
                         {project.solution}
                       </p>
                     </div>
@@ -117,7 +117,7 @@ function getProjectMetrics(company: string) {
 
                 {project.technologies && project.technologies.length > 0 && (
                   <div class='p-6 mt-auto'>
-                    <div class='border-t border-border/10 pt-4'>
+                    <div class='border-t border-border/10 pt-component-xs'>
                       <div class='flex flex-wrap gap-1.5'>
                         {project.technologies.map((tech: string, techIndex: number) => (
                           <Badge 

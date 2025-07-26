@@ -10,14 +10,14 @@ const currentYear = new Date().getFullYear();
 ---
 
 <Layout title={pageTitle}>
-  <main>
+  <main id="main-content">
     <Hero />
-    <div class='container mx-auto px-4 sm:px-6 space-y-24 md:space-y-32'>
+    <div class='container mx-auto px-4 sm:px-6 space-y-section-md md:space-y-section-lg lg:space-y-section-xl'>
       <ExperienceTimeline />
       <ProjectShowcase />
       <Contact />
     </div>
-    <footer class='py-8 mt-24 border-t border-border/20'>
+    <footer class='py-component-md mt-section-md md:mt-section-lg lg:mt-section-xl border-t border-border/20'>
       <div class='flex flex-col items-center justify-center space-y-4'>
         <div class='text-3xl font-bold font-heading'>UA</div>
         <div class='flex space-x-4 text-muted-foreground'>
@@ -31,7 +31,7 @@ const currentYear = new Date().getFullYear();
             >Contact</a
           >
         </div>
-        <div class='text-sm text-muted-foreground mt-4'>
+        <div class='text-sm text-muted-foreground mt-component-xs'>
           © {currentYear} Ugur Armagan. All rights reserved.
         </div>
       </div>

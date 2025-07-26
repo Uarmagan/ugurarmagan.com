@@ -4,19 +4,20 @@ import Section from "./Section.astro";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
+import { Image } from "astro:assets";
 
 const { experience } = resumeData;
 ---
 
 <Section id='experience' variant='fade'>
-  <h2 class='text-3xl md:text-4xl font-bold font-heading mb-8'>Experience</h2>
+  <h2 class='text-3xl md:text-4xl font-bold font-heading mb-component-md'>Experience</h2>
 
-  <p class='text-lg text-muted-foreground mb-12 max-w-3xl'>
+  <p class='text-lg text-muted-foreground mb-component-lg max-w-3xl'>
     My professional journey across various companies and roles.
   </p>
 
-  <div class='timeline-container relative max-w-6xl mx-auto overflow-hidden px-4 md:px-8'>
-    <div class='absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full hidden md:block' />
+  <div class='timeline-container relative max-w-6xl mx-auto px-4 md:px-component-md pt-4 pb-2'>
+    <div class='absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/20 via-primary/40 via-primary/30 to-transparent rounded-full hidden md:block z-0' />
     
     <div class='hidden lg:block'>
       {experience.map((item, index) => {
@@ -31,14 +32,14 @@ const { experience } = resumeData;
           >
             {isCardOnLeft ? (
               <>
-                <span class='absolute left-full ml-12 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
+                <span class='absolute left-full ml-12 text-xs font-mono text-muted-foreground/90 whitespace-nowrap'>
                   {year}
                 </span>
                 <div class='absolute left-full ml-4 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-primary/20' />
               </>
             ) : (
               <>
-                <span class='absolute right-full mr-12 text-xs font-mono text-muted-foreground/50 whitespace-nowrap'>
+                <span class='absolute right-full mr-12 text-xs font-mono text-muted-foreground/90 whitespace-nowrap'>
                   {year}
                 </span>
                 <div class='absolute right-full mr-4 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-primary/20' />
@@ -50,8 +51,8 @@ const { experience } = resumeData;
     </div>
     
     {experience.map((item, index) => (
-      <div class='timeline-item relative mb-12 last:mb-0 md:mb-16' data-index={index}>
-        <div class='hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10'>
+      <div class='timeline-item relative mb-component-lg last:mb-0 md:mb-section-xs' data-index={index}>
+        <div class='hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20'>
           <div class='relative'>
             <div class={`w-5 h-5 rounded-full bg-primary 
               ring-4 ring-background shadow-lg transition-all duration-300 hover:scale-125`} />
@@ -64,44 +65,58 @@ const { experience } = resumeData;
         <div class={`hidden md:block absolute left-1/2 top-1/2 -translate-y-1/2 ${index % 2 === 0 ? '-translate-x-full' : ''} 
           w-1/2 h-[2px] bg-gradient-to-r ${index % 2 === 0 
             ? 'from-primary/20 to-primary/50' 
-            : 'from-primary/50 to-primary/20'}`} />
+            : 'from-primary/50 to-primary/20'} z-0`} />
         
         <div class={`md:grid md:grid-cols-2 md:gap-12 ${index % 2 === 0 ? '' : 'md:direction-rtl'}`}>
           
           <div class={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:order-2'}`}>
             <Card 
-              className={`timeline-card relative border border-border/50 
-                transition-all duration-300 hover:shadow-lg hover:border-border/80
-                ${index === 0 ? 'ring-1 ring-primary/20 shadow-md' : ''}`}
+              className={`timeline-card glass-timeline-solid shadow-elevation-medium shadow-hover
+                transition-all duration-300 hover:border-primary/50 relative z-20
+                ${index === 0 ? 'ring-1 ring-primary/30' : ''}`}
             >
               <CardContent className='p-0'>
                 <div class='p-4 sm:p-6 border-b border-border/10'>
                   <div class='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3'>
                     <div class='flex items-start gap-3 sm:gap-4 min-w-0'>
-                      <div class='relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-bold text-sm bg-gradient-to-br from-muted/80 to-muted/60 text-muted-foreground flex-shrink-0'>
-                        <span>{item.company.substring(0, 2).toUpperCase()}</span>
+                      <div class='relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center flex-shrink-0 bg-white/5 border border-white/10 shadow-sm hover:shadow-md hover:bg-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm'>
+                        {item.logoUrl ? (
+                          <img 
+                            src={item.logoUrl} 
+                            alt={`${item.company} logo`}
+                            class={`object-contain drop-shadow-sm hover:scale-105 transition-all duration-300 ${
+                              item.company === 'United Healthcare' || item.company === 'Costco' || item.company === 'Epsilon'
+                                ? 'w-10 h-10 sm:w-12 sm:h-12' 
+                                : 'w-8 h-8 sm:w-10 sm:h-10'
+                            }`}
+                            loading='lazy'
+                            decoding='async'
+                          />
+                        ) : (
+                          <span class='font-bold text-sm text-muted-foreground'>{item.company.substring(0, 2).toUpperCase()}</span>
+                        )}
                       </div>
                       <div class='flex-1 min-w-0'>
                         <div class='flex items-center gap-2 flex-wrap'>
-                          <h3 class='font-semibold text-base sm:text-lg'>{item.company}</h3>
+                          <h3 class='font-semibold text-lg md:text-xl lg:text-2xl'>{item.company}</h3>
                           {index === 0 && (
                             <span class='inline-flex items-center gap-1 px-2 py-0.5 text-[10px] uppercase tracking-wide bg-primary/10 text-primary rounded-full border border-primary/20 font-medium'>
                               Current
                             </span>
                           )}
                         </div>
-                        <p class='text-sm text-muted-foreground mt-0.5'>
+                        <p class='text-sm text-muted-foreground/95 mt-0.5'>
                           {item.title}
                         </p>
                       </div>
                     </div>
                     
                     <div class='flex flex-col items-start lg:items-end gap-1 flex-shrink-0 mt-2 lg:mt-0'>
-                      <span class='text-xs sm:text-sm font-mono text-muted-foreground break-words'>
+                      <span class='text-xs sm:text-sm font-mono text-muted-foreground/95 break-words'>
                         {item.dates}
                       </span>
                       {item.location && (
-                        <span class='text-xs text-muted-foreground/80 flex items-center gap-1'>
+                        <span class='text-xs text-muted-foreground/95 flex items-center gap-1'>
                           <MapPin className='w-3 h-3' />
                           {item.location}
                         </span>
@@ -111,7 +126,7 @@ const { experience } = resumeData;
                 </div>
                 
                 <div class='p-4 sm:p-6'>
-                  <p class='text-muted-foreground leading-relaxed text-sm sm:text-[15px]'>
+                  <p class='text-muted-foreground/95 leading-relaxed text-sm sm:text-[15px]'>
                     {item.description}
                   </p>
                 </div>
@@ -134,10 +149,10 @@ const { experience } = resumeData;
       </div>
     ))}
     
-    <div class='md:hidden absolute left-6 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full' />
+    <div class='md:hidden absolute left-6 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent rounded-full z-0' />
   </div>
 
-  <div class='mt-12 text-center'>
+  <div class='mt-component-lg text-center'>
     <Button variant='outline' asChild>
       <a href='/Ugur-Armagan-2025.pdf' target='blank' rel='noopener noreferrer'>
         View Full Resume
@@ -156,6 +171,7 @@ const { experience } = resumeData;
   .timeline-item[data-index="1"] { animation-delay: 0.2s; }
   .timeline-item[data-index="2"] { animation-delay: 0.3s; }
   .timeline-item[data-index="3"] { animation-delay: 0.4s; }
+
 
   @keyframes fadeInUp {
     from {
