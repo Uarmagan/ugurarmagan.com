@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/Ugur-Armagan-2025.pdf",
+      "destination": "/ugur-armagan-resume.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/ugur-armagan-2025.pdf",
+      "destination": "/ugur-armagan-resume.pdf",
+      "permanent": true
+    }
+  ],
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build"
+}

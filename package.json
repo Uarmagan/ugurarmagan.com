@@ -34,5 +34,8 @@
   },
   "devDependencies": {
     "postcss": "^8.5.3"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
